@@ -40,3 +40,23 @@
 .read-the-docs {
   color: #888;
 }
+
+.form {
+  display: flex;
+  background-color: #d6d6d6;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid rgb(255, 255, 255);
+  color: #1b1b1b;
+}
+
+.button {
+  padding: 5px;
+  margin: 10px;
+}
+
+.error {
+  color: red;
+}
