@@ -6,7 +6,7 @@ import SecondPage from "./SecondPage.tsx";
 
 function App() {
   const [navigate_flag, set_navigate_flag] = useState<boolean>(false);
-  console.log(navigate_flag);
+
   return (
     <Router>
       <Routes>

@@ -41,6 +41,20 @@ function FirstPage({ set_navigate_flag }: { set_navigate_flag: () => void }) {
       set_error_msg("Please enter all the fields");
       return;
     }
+
+    const phoneRegex = /^[0-9]{10}$/;
+    if (!phoneRegex.test(form_data.phone)) {
+      set_error_msg(
+        "Phone number should be 10 digits and contain only numbers"
+      );
+      return;
+    }
+
+    const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+    if (!emailRegex.test(form_data.email)) {
+      set_error_msg("Please enter a valid email address");
+      return;
+    }
     try {
       Object.keys(form_data).forEach((key) => {
         localStorage.setItem(key, form_data[key as keyof Form_Data]);

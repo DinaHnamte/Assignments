@@ -37,6 +37,13 @@ const Departments: React.FC = () => {
     });
 
     setCheckedItems(updatedCheckedItems);
+
+    if (isChecked) {
+      setVisibleSubDepts((prevState) => ({
+        ...prevState,
+        [department]: true,
+      }));
+    }
   };
 
   const handleSubDepartmentChange = (
