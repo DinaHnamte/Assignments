@@ -1,20 +1,26 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { TextField, Button } from "@mui/material";
+import { Form_Data } from "./lib/types";
 
-function FirstPage() {
-  interface Form_Data {
-    name: string;
-    email: string;
-    phone: string;
-  }
-
+function FirstPage({ set_navigate_flag }: { set_navigate_flag: () => void }) {
   const [error_msg, set_error_msg] = useState("");
   const [form_data, set_form_data] = useState<Form_Data>({
     name: "",
     email: "",
     phone: "",
   });
+
+  const navigate = useNavigate();
+  const location = useLocation();
+  const error: string = location.state?.error;
+
+  useEffect(() => {
+    if (error) {
+      set_error_msg(error);
+    }
+  }, [error]);
 
   const clearError = () => {
     set_error_msg("");
@@ -33,11 +39,14 @@ function FirstPage() {
       form_data.phone === ""
     ) {
       set_error_msg("Please enter all the fields");
+      return;
     }
     try {
       Object.keys(form_data).forEach((key) => {
         localStorage.setItem(key, form_data[key as keyof Form_Data]);
       });
+      set_navigate_flag();
+      navigate("/second");
     } catch (error) {
       console.error(error);
     }
@@ -61,7 +70,7 @@ function FirstPage() {
           Submit
         </Button>
         <Button onClick={clearStorage}>Clear</Button>
-        <p className="error">{error_msg}</p>
+        <span className="error">{error_msg}</span>
       </div>
     </>
   );

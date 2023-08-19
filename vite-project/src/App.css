@@ -48,6 +48,8 @@
   justify-content: center;
   align-items: center;
   padding: 20px;
+  max-width: 300px;
+  min-width: 300px;
   border: 1px solid rgb(255, 255, 255);
   color: #1b1b1b;
 }
@@ -59,4 +61,39 @@
 
 .error {
   color: red;
+  width: inherit;
+}
+
+.data-table {
+  background-color: #888;
+}
+
+.department {
+  margin: 10px;
+  padding: 10px;
+  background-color: #404040;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.department-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.sub-departments {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.department-hide-button {
+  width: 10px;
+  height: 20px;
+  font-size: 2rem;
 }
